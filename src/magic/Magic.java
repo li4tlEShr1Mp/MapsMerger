@@ -1,3 +1,5 @@
+package magic;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;
@@ -10,6 +12,8 @@ public class Magic {
         Graphics g = result.getGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, width, height);
+        float amount = normalMaps.size();
+        int count = 0;
         for (BufferedImage item : normalMaps) {
             for (int i = 0; i < width; i++) {
                 for (int j = 0; j < height; j++) {
@@ -17,6 +21,7 @@ public class Magic {
                     result.setRGB(i, j, rgb ^ result.getRGB(i, j));
                 }
             }
+            System.out.println("Processing:" + ++count / amount * 100 + "%");
         }
         for (int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
